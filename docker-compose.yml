@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  node:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root1234
+      DB_NAME: projeto
+
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root1234
+      POSTGRES_DB: projeto
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  react-app:
+    build: ./react-app
+    ports:
+      - "80:80"
+    depends_on:
+      - node
+
+volumes:
+  db_data:
