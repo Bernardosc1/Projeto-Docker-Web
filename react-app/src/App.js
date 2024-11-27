@@ -10,7 +10,7 @@ const App = () => {
   // Função para buscar alunos
   const fetchAlunos = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/alunos`);
+      const response = await fetch(`${API_URL}/v1/api/alunos`);
       const data = await response.json();
       setAlunos(data);
     } catch (err) {
@@ -26,7 +26,7 @@ const App = () => {
   // Função para adicionar um aluno
   const adicionarAluno = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/alunos`, {
+      const response = await fetch(`${API_URL}/v1/api/alunos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoAluno),

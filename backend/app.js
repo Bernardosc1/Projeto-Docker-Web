@@ -24,7 +24,7 @@ const pool = new Pool({
 
 
 // Rota para listar alunos
-app.get('/api/alunos', async (req, res) => {
+app.get('/v1/api/alunos', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM alunos');
     res.json(result.rows);
@@ -35,7 +35,7 @@ app.get('/api/alunos', async (req, res) => {
 });
 
 // Rota para adicionar um aluno
-app.post('/api/alunos', async (req, res) => {
+app.post('/v1/api/alunos', async (req, res) => {
   const { nome, idade, curso } = req.body;
 
   if (!nome || !idade || !curso) {
