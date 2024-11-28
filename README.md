@@ -1,4 +1,4 @@
-# Quiz
+# Docker-App
 
 Projeto desenvolvido para nossa A3 da matéria de Sistemas Distribuidos e Mobile.
 
